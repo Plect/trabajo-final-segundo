@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: pecera_web
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+    networks:
+      - pecera-network
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: pecera_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: pecera_digital
+      MYSQL_USER: victor_user
+      MYSQL_PASSWORD: user_password
+    ports:
+      - "3306:3306"
+    networks:
+      - pecera-network
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: pecera_pma
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+    networks:
+      - pecera-network
+    depends_on:
+      - db
+
+networks:
+  pecera-network:
+    driver: bridge
+
+volumes:
+  db_data:
