@@ -34,6 +34,8 @@ Para facilitar la corrección, se ha incluido un usuario administrador de prueba
 
 * **Usuario:** admin
 * **Contraseña:** admin
+  
+La cuenta administrador se ha configurado para tener dinero casi ilimitado (9999) y niveles maximizados (100), para facilitar la revisión de la compra del usuario.
 
 *(Nota: El sistema incluye una página de registro funcional en la pantalla de inicio de sesión, por lo que el equipo evaluador también puede crear una nueva cuenta si lo desea).*
 
